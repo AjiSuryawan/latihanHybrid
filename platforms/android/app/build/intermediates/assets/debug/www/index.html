@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <title></title>
+</head>
+
+<body>
+  <script>
+    function login(){
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            if(email==""&& password==""){
+                alert("Cannot empty");
+            }else{
+                var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // response 
+                document.getElementById("status").innerHTML = this.responseText;
+                window.setTimeout(function () {
+            window.location.href("http://192.168.6.129/MyApp/www/html/home.html");
+        }, 5000);
+              }
+        };
+        xmlhttp.open("GET", "http://192.168.6.129/MyApp/www/save_database.php?email=" + email+"&password="+password, true);
+        xmlhttp.send();
+        }
+        }
+    </script>
+  <form class="form_box">
+    <label>E-Mail</label>
+    <input type="email" placeholder="E-mail" id="email" class="email" /><br />
+    <label>Password</label>
+    <input type="password" placeholder="Password" id="password" class="password" /><br />
+    <input type="button" value="LOGIN" class="button_login" onclick="login()" /><br />
+  </form>
+  <label name="message_label">Message:</label>
+  <p id="status" name="status"></p>
+</body>
+
+</html>

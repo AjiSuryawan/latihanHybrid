@@ -1,0 +1,33 @@
+input.email[type=email],input.password[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;   
+}
+input.button_login[type=button]{
+    background-color:#ccc;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+form.form_box{
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    padding: 14px 20px;
+}
+label.message_label{
+    margin-left: 25%;
+}
+p.status{
+    margin-left: 50%;
+}
+img.image_logo{
+    margin-left: 45%;
+    margin-right: 55%;
+}
