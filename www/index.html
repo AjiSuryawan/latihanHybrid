@@ -1,41 +1,125 @@
 <html>
 
 <head>
-  <title></title>
+    <title></title>
+    <style>
+        body{
+    background-color: #67BE49;
+ }
+ label.create_account{
+     color: black;
+ }
+ a.create_account{
+     color: #67BE49;
+ }
+ input.email[type=email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box; 
+    color: black;
+    background-color: #F2F2F2;
+    font-family: Tahoma, Geneva, sans-serif;
+    text-align: left;  
+}
+input.password[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box; 
+    color: black;  
+    background-color: #F2F2F2;
+    font-family: Tahoma, Geneva, sans-serif;
+    text-align: left;
+}
+/* input.button_login[type=submit]{
+    background-color:#00B242;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    
+} */
+input.button_login[type=button]{
+    background-color:#00B242;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+form.form_box{
+    text-align: center;
+    margin-left: 35%;
+    margin-top:10%;
+    width: 25%;
+    background-color:white;
+    padding: 50px; 
+}
+#status{
+    color: red;
+}
+.div_email{
+    position: relative;
+}
+.div_email.icon_image{
+    width:10px;
+    position: absolute;
+}
+</style>
 </head>
 
 <body>
-  <script>
-    function login(){
+    <script>
+        function login(){
+            var url = "http://192.168.6.10/"
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             if(email==""&& password==""){
-                alert("Cannot empty");
+                document.getElementById("status").innerHTML = "Cannot empty";
+                setTimeout(function(){
+                    document.getElementById("status").innerHTML = "";
+               }, 5000);    
             }else{
                 var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
+                xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 // response 
-                document.getElementById("status").innerHTML = this.responseText;
-                window.setTimeout(function () {
-            window.location.href("http://192.168.6.129/MyApp/www/html/home.html");
-        }, 5000);
-              }
-        };
-        xmlhttp.open("GET", "http://192.168.6.129/MyApp/www/save_database.php?email=" + email+"&password="+password, true);
-        xmlhttp.send();
+                var response = this.responseText;
+                if(response == "Success login"){
+                    setTimeout(function(){
+                    window.location.href = url+'MyApp/www/html/home.html';
+               }, 5000);
+            }else if(response == "Invalidate email or password"){
+                document.getElementById("status").innerHTML = response;   
+                setTimeout(function(){
+                    document.getElementById("status").innerHTML = "";
+               }, 5000);
+            }else{
+
+            }    
         }
-        }
+    };
+    xmlhttp.open("GET", url+"MyApp/www/save_database.php?email=" + email+"&password="+password, true);
+    xmlhttp.send();
+    }
+}
     </script>
-  <form class="form_box">
-    <label>E-Mail</label>
-    <input type="email" placeholder="E-mail" id="email" class="email" /><br />
-    <label>Password</label>
-    <input type="password" placeholder="Password" id="password" class="password" /><br />
-    <input type="button" value="LOGIN" class="button_login" onclick="login()" /><br />
-  </form>
-  <label name="message_label">Message:</label>
-  <p id="status" name="status"></p>
+    <form class="form_box">
+        <input type="email" placeholder="E-mail" id="email" class="email" required />
+        <input type="password" placeholder="Password" id="password" class="password" /><br />
+        <input type="button" value="LOGIN" class="button_login" onclick="login()" /><br />
+        <p id="status"></p>
+        <label class="create_account">Not registered? <a href="#" class="create_account">Create an account</a></label>
+    </form>
 </body>
 
 </html>

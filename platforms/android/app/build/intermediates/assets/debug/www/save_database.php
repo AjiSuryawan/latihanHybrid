@@ -6,8 +6,8 @@ $sql = "SELECT * FROM tb_user where email='$email' and password='$password'";
 $result_sql = mysqli_query($koneksi,$sql);
 $cek = mysqli_num_rows($result_sql);
 if($cek > 0){
-    echo "Berhasil masuk";
+    echo "Success login";
 }else{
-    echo "Gagal masuk";
+    echo "Invalidate email or password";
 }
 ?>
