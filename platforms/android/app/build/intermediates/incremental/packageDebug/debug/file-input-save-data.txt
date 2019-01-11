@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jan 11 08:28:46 ICT 2019
+#Fri Jan 11 09:32:59 ICT 2019
 17.baseType=DIRECTORY
 4.path=www/js/jquery-3.3.1.min.js
 25.base=C\:\\xampp\\htdocs\\MyApp\\platforms\\android\\app\\build\\intermediates\\assets\\debug

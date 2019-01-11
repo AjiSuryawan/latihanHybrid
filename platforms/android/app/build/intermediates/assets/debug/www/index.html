@@ -5,10 +5,9 @@
     <style>
         body{
     background-color: #67BE49;
+    margin: 0;
  }
  label.create_account{
-     padding-top: 60px;
-     margin-left: 60px;
      color: black;
  }
  a.create_account{
@@ -23,7 +22,8 @@
     box-sizing: border-box; 
     color: black;
     background-color: #F2F2F2;
-    font-family: Tahoma, Geneva, sans-serif;  
+    font-family: Tahoma, Geneva, sans-serif;
+    text-align: left;  
 }
 input.password[type=password]{
     width: 100%;
@@ -35,8 +35,9 @@ input.password[type=password]{
     color: black;  
     background-color: #F2F2F2;
     font-family: Tahoma, Geneva, sans-serif;
+    text-align: left;
 }
-input.button_login[type=submit]{
+/* input.button_login[type=submit]{
     background-color:#00B242;
     color: white;
     padding: 14px 20px;
@@ -44,7 +45,8 @@ input.button_login[type=submit]{
     border: none;
     cursor: pointer;
     width: 100%;
-}
+    
+} */
 input.button_login[type=button]{
     background-color:#00B242;
     color: white;
@@ -53,19 +55,19 @@ input.button_login[type=button]{
     border: none;
     cursor: pointer;
     width: 100%;
+    text-align: center;
 }
 form.form_box{
-    margin-left: 35%;
+    text-align: center;
+    margin-left: 30%;
+    margin-right : 30%;
     margin-top:10%;
     width: 25%;
-    padding: 14px 20px;
     background-color:white;
-    padding: 30px; 
+    padding: 50px; 
 }
 #status{
     color: red;
-    margin-left: 60px;
-
 }
 .div_email{
     position: relative;
@@ -73,6 +75,12 @@ form.form_box{
 .div_email.icon_image{
     width:10px;
     position: absolute;
+}
+@media only screen and (min-width:600px){
+
+}
+@media only screen and (min-width:768px){
+    
 }
 </style>
 </head>
@@ -113,13 +121,15 @@ form.form_box{
     }
 }
     </script>
+    <div align="center">
     <form class="form_box">
-        <input type="email" placeholder="E-mail" id="email" class="email" required/>
+        <input type="email" placeholder="E-mail" id="email" class="email" required />
         <input type="password" placeholder="Password" id="password" class="password" /><br />
         <input type="button" value="LOGIN" class="button_login" onclick="login()" /><br />
         <p id="status"></p>
         <label class="create_account">Not registered? <a href="#" class="create_account">Create an account</a></label>
     </form>
+</div>
 </body>
 
 </html>
